@@ -65,9 +65,7 @@ AC_DEFUN_ONCE([LIB_SETUP_INIT],
     AC_MSG_CHECKING([what is not needed on MacOSX?])
     ALSA_NOT_NEEDED=yes
     PULSE_NOT_NEEDED=yes
-    X11_NOT_NEEDED=yes
-    FONTCONFIG_NOT_NEEDED=yes
-    AC_MSG_RESULT([alsa pulse x11])
+    AC_MSG_RESULT([alsa pulse])
   fi
 
   if test "x$OPENJDK_TARGET_OS" = xbsd; then
@@ -324,7 +322,6 @@ AC_DEFUN_ONCE([LIB_SETUP_FREETYPE],
   fi
   FREETYPE_TO_USE=bundled
   if test "x$OPENJDK_TARGET_OS" != "xwindows" && \
-      test "x$OPENJDK_TARGET_OS" != "xmacosx" && \
       test "x$OPENJDK_TARGET_OS" != "xaix"; then
     FREETYPE_TO_USE=system
   fi
@@ -348,8 +345,7 @@ AC_DEFUN_ONCE([LIB_SETUP_FREETYPE],
   fi
 
   if test "x$FREETYPE_TO_USE" = "xsystem" && \
-     (test "x$OPENJDK_TARGET_OS" = "xwindows" || \
-     test "x$OPENJDK_TARGET_OS" = "xmacosx"); then
+     test "x$OPENJDK_TARGET_OS" = "xwindows" ; then
     AC_MSG_ERROR([Only bundled freetype can be specified on Mac and Windows])
   fi
 

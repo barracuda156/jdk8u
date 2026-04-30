@@ -43987,10 +43987,8 @@ $as_echo "alsa cups pulse x11" >&6; }
 $as_echo_n "checking what is not needed on MacOSX?... " >&6; }
     ALSA_NOT_NEEDED=yes
     PULSE_NOT_NEEDED=yes
-    X11_NOT_NEEDED=yes
-    FONTCONFIG_NOT_NEEDED=yes
-    { $as_echo "$as_me:${as_lineno-$LINENO}: result: alsa pulse x11" >&5
-$as_echo "alsa pulse x11" >&6; }
+    { $as_echo "$as_me:${as_lineno-$LINENO}: result: alsa pulse" >&5
+$as_echo "alsa pulse" >&6; }
   fi
 
   if test "x$OPENJDK_TARGET_OS" = xbsd; then
@@ -45172,7 +45170,6 @@ fi
   fi
   FREETYPE_TO_USE=bundled
   if test "x$OPENJDK_TARGET_OS" != "xwindows" && \
-      test "x$OPENJDK_TARGET_OS" != "xmacosx" && \
       test "x$OPENJDK_TARGET_OS" != "xaix"; then
     FREETYPE_TO_USE=system
   fi
@@ -45196,8 +45193,7 @@ fi
   fi
 
   if test "x$FREETYPE_TO_USE" = "xsystem" && \
-     (test "x$OPENJDK_TARGET_OS" = "xwindows" || \
-     test "x$OPENJDK_TARGET_OS" = "xmacosx"); then
+      test "x$OPENJDK_TARGET_OS" = "xwindows" ; then
     as_fn_error $? "Only bundled freetype can be specified on Mac and Windows" "$LINENO" 5
   fi
 
